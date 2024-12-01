@@ -1,4 +1,4 @@
-import style from "./page.module.css";
+// import mockData from "../../../mock/books.json";
 
 const mockData = {
   id: 1,
@@ -28,19 +28,22 @@ export default function Page({
   } = mockData;
 
   return (
-    <div className={style.container}>
+    <div className="flex flex-col gap-2.5">
       <div
-        className={style.cover_img_container}
+        className="relative flex justify-center p-5 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url('${coverImgUrl}')` }}
       >
-        <img src={coverImgUrl} />
+        <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+        <img src={coverImgUrl} className="z-10 max-h-[350px] h-full" />
       </div>
-      <div className={style.title}>{title}</div>
-      <div className={style.subTitle}>{subTitle}</div>
-      <div className={style.author}>
+      <div className="text-lg font-bold">{title}</div>
+      <div className="text-gray-500">{subTitle}</div>
+      <div className="text-gray-500">
         {author} | {publisher}
       </div>
-      <div className={style.description}>{description}</div>
+      <div className="bg-gray-100 p-3.5 leading-relaxed whitespace-pre-line rounded-md">
+        {description}
+      </div>
     </div>
   );
 }
