@@ -1,28 +1,31 @@
+import { notFound } from "next/navigation";
 
+// false로 변경하면 1,2,3이외에는 모두 404 에러가 발생합니다.
+export const dynamicParams = true; 
 
+// getStaticPaths 함수의 앱라우트버전
+export function generateStaticParams() {
+  return [{ id: "1" }, { id: "2" }, { id: "3" }];
+}
 
 export default async function Page({
   params,
 }: {
   params: { id: string | string[] };
 }) {
-
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${params.id}`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${params.id}`
+  );
   if (!response.ok) {
-    throw new Error("서버 오류가 발생했습니다.");
+    if (response.status === 404) {
+      notFound();
+      return <div>책 정보를 불러오는 중 오류가 발생했습니다.</div>;
+    }
   }
   const book = await response.json();
 
-
-  const {
-    id,
-    title,
-    subTitle,
-    description,
-    author,
-    publisher,
-    coverImgUrl,
-  } = book;
+  const { id, title, subTitle, description, author, publisher, coverImgUrl } =
+    book;
 
   return (
     <div className="flex flex-col gap-2.5">
