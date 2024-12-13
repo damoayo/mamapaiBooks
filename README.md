@@ -14,13 +14,13 @@
 
 ### 프레임워크 및 라이브러리
 
-- **React**
-- **TypeScript**
-- **NextJS**
+- ![React](https://img.shields.io/badge/-React-black?style=flat-square&logo=react)
+![TypeScript](https://img.shields.io/badge/-TypeScript-black?style=flat-square&logo=typescript)
+![Next JS](https://img.shields.io/badge/-Next-black?style=flat-square&logo=next.js&logoColor=white)
 
 ### 데이터베이스 및 계정 관리
 
-- **Supabase**
+- ![Supabase](https://img.shields.io/badge/-Supabase-black?style=flat-square&logo=Supabase)
   - **Supabase**
   - **Authentication**
   - **Emulator**
