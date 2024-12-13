@@ -8,13 +8,9 @@ export function generateStaticParams() {
   return [{ id: "1" }, { id: "2" }, { id: "3" }];
 }
 
-export default async function Page({
-  params,
-}: {
-  params: { id: string | string[] };
-}) {
+async function BookDetail({bookId}: {bookId: string}) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${params.id}`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${bookId}`
   );
   if (!response.ok) {
     if (response.status === 404) {
@@ -46,4 +42,13 @@ export default async function Page({
       </div>
     </div>
   );
+}
+
+export default async function Page({
+  params,
+}: {
+  params: { id: string | string[] };
+}) {
+  const bookId = Array.isArray(params.id) ? params.id[0] : params.id;
+  return <BookDetail bookId={bookId} />;
 }
