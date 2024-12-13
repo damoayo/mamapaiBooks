@@ -20,8 +20,8 @@
 
 ### 데이터베이스 및 계정 관리
 
-- **Firebase**
-  - **Firestore**
+- **Supabase**
+  - **Supabase**
   - **Authentication**
   - **Emulator**
 
